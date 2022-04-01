@@ -1,14 +1,11 @@
-const cds = require("@sap/cds");
-const req = require("express/lib/request");
-
 class BusinessPartner extends cds.ApplicationService {
     async init(){
-        const BusinessPartnerAPI = await cds.connect.to("API_BUSINESS_PARTNER");
+        const bupa = await cds.connect.to("API_BUSINESS_PARTNER");
 
-        const A_BusinessPartner = BusinessPartnerAPI.entities;
-        const BusinessPartner = this.entities;
+        const {A_BusinessPartner} = bupa.entities;
+        const {BusinessPartner} = this.entities;
 
-        this.on("READ", A_BusinessPartner, (req) => {
+        this.on("READ", bupa, (req) => {
             return BusinessPartnerAPI.run(req.query);
         })
     }

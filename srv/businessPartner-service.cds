@@ -6,9 +6,13 @@ service BusinessPartner {
         *
     };
 
-    entity Customer {
-        key BusinessPartner : String(40);
-        FirstName : String(40);
-        LastName : String(40);
-    };
 }
+
+annotate BusinessPartner.A_BusinessPartner with @(UI: {
+    SelectionFields : [BusinessPartner],
+    LineItem        : [
+        {Value : BusinessPartner},
+        {Value : Customer},
+        {Value : Supplier},
+    ],
+});
