@@ -47,8 +47,14 @@
         "model": "srv\\external\\API_BUSINESS_PARTNER",
         "[development]": {
           "credentials": {
-            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER"
+            "authentication": "BasicAuthentication"
           }
+        }
+      },
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "database": "my.db"
         }
       }
     }
